@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woshawosh</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="logo"></div>
+    <div class="container">
+        <div class="timer" id="timer">
+            <h1>Erreur</h1>
+            <p>il vous reste</p>
+            <ul>
+                <li><span id="minutes"></span></li>
+                <li class="lilisere"><span class="lisere"></span></li>
+                <li><span id="seconds"></span></li>
+            </ul>
+            <p style="margin-bottom: 30px;">pour trouver le bon code</p>
+            <form>
+                <input type="text" name="password" id="password" class="password">
+                <br>
+                <input type="button" value="valider" id="validButton" onclick="valid()">
+            </form>
+        </div>
+    </div>
+    <script>
+        const second = 1000,
+            minute = second * 60,
+            hour = minute * 60,
+            day = hour * 24;
+
+        let countDown = new Date();
+        countDown.setMinutes(countDown.getMinutes() + 3.1);
+
+        x = setInterval(function () {
+
+            let now = new Date().getTime(),
+                distance = countDown - now;
+
+                document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (
+                    minute)),
+                document.getElementById('seconds').innerText = Math.floor((distance % (minute)) /
+                    second);
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.location.href = "defaite.html";
+            }
+        }, second)
+        //fonction appellé dans le html par onclick="valid()" Pas propre mais efficace donc balec
+        function valid() {
+            // variable qui définie le password à trouver
+            var secretPassword = "59317";
+            //on récupère la valeur de l'input dans le html
+            let data = document.getElementById('password').value;
+            //on compare les valeurs
+            if (data == secretPassword) {
+                document.location.href = "victoire.html";
+            } else {
+                console.log("Wrong password");
+            }
+        }
+    </script>
+</body>
+
+</html>
