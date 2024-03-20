@@ -1,0 +1,12 @@
+body {
+    margin : 0;
+    padding : 0;
+    text-align: center;
+}
+
+.spellSelect {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    margin : 0 0 15px 0; 
+}
